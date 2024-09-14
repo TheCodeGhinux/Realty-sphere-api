@@ -1,4 +1,4 @@
-# [App Name] Integration Documentation
+# Realty Sphere Integration Documentation
 
 ## Overview
 
