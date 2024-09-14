@@ -20,6 +20,14 @@ import { UserModule } from '@user/user.module';
 import ProbeController from '@/probe.controller';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { PropertyModule } from './modules/property/property.module';
+import { AgentModule } from './modules/agent/agent.module';
+import { TransactionsModule } from './modules/transactions/transactions.module';
+import { AdminModule } from './modules/admin/admin.module';
+import { BookingsModule } from './modules/bookings/bookings.module';
+import { ReviewsModule } from './modules/reviews/reviews.module';
+import { NotificationsModule } from './modules/notifications/notifications.module';
+import { AnalyticsModule } from './modules/analytics/analytics.module';
 @Module({
   providers: [
     {
@@ -109,6 +117,22 @@ import { join } from 'path';
         index: false,
       },
     }),
+
+    PropertyModule,
+
+    AgentModule,
+
+    TransactionsModule,
+
+    AdminModule,
+
+    BookingsModule,
+
+    ReviewsModule,
+
+    NotificationsModule,
+
+    AnalyticsModule,
   ],
   controllers: [HealthController, ProbeController],
 })
