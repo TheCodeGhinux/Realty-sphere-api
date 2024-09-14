@@ -14,5 +14,15 @@ export const RESOURCE_NOT_FOUND = resource => {
   return `${resource} does not exist`;
 };
 
+export const RESOURCE_FOUND_SUCCESSFULLY = (resource: string) => {
+  return `${resource} found successfully`;
+};
+export const RESOURCE_ALREADY_EXISTS = resource => {
+  return `${resource} already exist`;
+};
+export const INVALID_RESOURCE = (resource: string) => {
+  return `${resource} is invalid`;
+};
+
 export const BAD_REQUEST = 'Bad request error';
 export const INVALID_CREDENTIALS = 'Invalid credentials';

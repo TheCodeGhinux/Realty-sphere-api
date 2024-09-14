@@ -24,7 +24,8 @@ import { Review } from '@reviews/entities/review.entity';
 export enum UserType {
   SUPER_ADMIN = 'super-admin',
   ADMIN = 'admin',
-  USER = 'vendor',
+  AGENT = 'agent',
+  USER = 'user',
 }
 
 @Entity({ name: 'users' })

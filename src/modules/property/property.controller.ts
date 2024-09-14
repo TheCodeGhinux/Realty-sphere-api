@@ -1,20 +1,23 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Req } from '@nestjs/common';
 import { PropertyService } from './property.service';
 import { CreatePropertyDto } from './dto/create-property.dto';
 import { UpdatePropertyDto } from './dto/update-property.dto';
+import { skipAuth } from '@/helpers/skipAuth';
 
-@Controller('property')
+@Controller('properties')
 export class PropertyController {
   constructor(private readonly propertyService: PropertyService) {}
 
   @Post()
-  create(@Body() createPropertyDto: CreatePropertyDto) {
-    return this.propertyService.create(createPropertyDto);
+  async createProperty(@Body() createPropertyDto: CreatePropertyDto, @Req() req) {
+    const ownerId = req.user?.sub;
+    return await this.propertyService.createProperty(createPropertyDto, ownerId);
   }
 
+  @skipAuth()
   @Get()
-  findAll() {
-    return this.propertyService.findAll();
+  findAllProperties() {
+    return this.propertyService.findAllProperties();
   }
 
   @Get(':id')
