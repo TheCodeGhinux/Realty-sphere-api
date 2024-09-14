@@ -17,6 +17,11 @@
       "@helpers/*": ["src/helpers/*"],
       "@user/*": ["src/modules/user/*"],
       "@auth/*": ["src/modules/auth/*"],
+      "@property/*": ["src/modules/property/*"],
+      "@agent/*": ["src/modules/agent/*"],
+      "@bookings/*": ["src/modules/bookings/*"],
+      "@reviews/*": ["src/modules/reviews/*"],
+      "@transactions/*": ["src/modules/transactions/*"],
       "@shared/*": ["src/shared/*"],
       "@db/*": ["src/database/*"],
       "@entities/*": ["src/entities/*"]
