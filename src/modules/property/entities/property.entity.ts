@@ -8,19 +8,33 @@ import { Booking } from '@bookings/entities/booking.entity';
 import { Transaction } from '@transactions/entities/transaction.entity';
 import { Review } from '@reviews/entities/review.entity';
 
+export enum PropertyStatus {
+  AVAILABLE = 'available',
+  SOLD = 'sold',
+  PENDING = 'pending',
+}
+
+export enum ListingType {
+  RENT = 'rent',
+  SALE = 'sale',
+}
+
+export enum PropertyType {
+  HOUSE = 'house',
+  APARTMENT = 'apartment',
+  COMMERCIAL = 'commercial',
+}
+
 @Entity('properties')
 export class Property extends AbstractBaseEntity {
-  @Column({ type: 'uuid' })
-  ownerId: string;
-
   @Column({})
   title: string;
 
-  @Column({ type: 'text', nullable: true })
+  @Column({ nullable: true })
   description: string;
 
-  @Column({ type: 'numeric' })
-  price: number;
+  @Column()
+  price: string;
 
   @Column({})
   address: string;
@@ -32,25 +46,28 @@ export class Property extends AbstractBaseEntity {
   state: string;
 
   @Column({})
+  country: string;
+
+  @Column({ nullable: true })
   zipCode: string;
 
-  @Column({})
-  propertyType: string;
+  @Column({ type: 'enum', enum: PropertyType })
+  propertyType: PropertyType;
 
-  @Column({ type: 'numeric' })
-  size: number;
+  @Column()
+  size: string;
 
-  @Column({ type: 'int', nullable: true })
+  @Column({ nullable: true })
   bedrooms: number;
 
-  @Column({ type: 'int', nullable: true })
+  @Column({ nullable: true })
   bathrooms: number;
 
-  @Column({})
-  status: string;
+  @Column({ type: 'enum', enum: PropertyStatus, default: PropertyStatus.AVAILABLE })
+  status: PropertyStatus;
 
-  @Column({})
-  listingType: string;
+  @Column({ type: 'enum', enum: ListingType })
+  listingType: ListingType;
 
   @ManyToOne(() => User, user => user.properties)
   owner: User;
