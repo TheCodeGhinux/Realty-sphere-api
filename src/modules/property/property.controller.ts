@@ -26,8 +26,8 @@ export class PropertyController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updatePropertyDto: UpdatePropertyDto) {
-    return this.propertyService.update(+id, updatePropertyDto);
+  async update(@Param('id') id: string, @Body() updatePropertyDto: UpdatePropertyDto) {
+    return await this.propertyService.updateProperty(id, updatePropertyDto);
   }
 
   @Delete(':id')
