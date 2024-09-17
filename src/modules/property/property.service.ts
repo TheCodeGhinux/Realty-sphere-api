@@ -59,7 +59,13 @@ export class PropertyService {
     };
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} property`;
+  deleteProperty(id: string) {
+    const property = this.propertyRepository.findOne({ where: { id } });
+    if (!property) throw new CustomHttpException(SYS_MSG.RESOURCE_NOT_FOUND('Property'), 404);
+
+    const deletedProperty = this.propertyRepository.delete({ id });
+    return {
+      message: 'Property deleted successfully',
+    };
   }
 }
