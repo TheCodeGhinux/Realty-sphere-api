@@ -36,10 +36,10 @@ export class CreatePropertyDto {
   size: string;
 
   @IsNumber()
-  bedrooms: string;
+  bedrooms: number;
 
   @IsNumber()
-  bathrooms: string;
+  bathrooms: number;
 
   @IsString()
   @IsEnum(PropertyStatus)

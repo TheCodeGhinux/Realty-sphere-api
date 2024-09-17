@@ -30,16 +30,33 @@ export class PropertyService {
     };
   }
 
-  findAllProperties() {
-    return `This action returns all property`;
+  async findAllProperties() {
+    const property = await this.propertyRepository.find({
+      relations: ['owner'],
+    });
+    return {
+      message: 'Properties fetched successfully',
+      data: property,
+    };
   }
 
   findOne(id: number) {
     return `This action returns a #${id} property`;
   }
 
-  update(id: number, updatePropertyDto: UpdatePropertyDto) {
-    return `This action updates a #${id} property`;
+  async updateProperty(id: string, updatePropertyDto: UpdatePropertyDto) {
+    const property = await this.propertyRepository.findOne({ where: { id } });
+    if (!property) throw new CustomHttpException(SYS_MSG.RESOURCE_NOT_FOUND('Property'), 404);
+
+    await this.propertyRepository.update({ id }, updatePropertyDto);
+
+    const updatedProperty = await this.propertyRepository.findOne({ where: { id } });
+    if (!updatedProperty) throw new CustomHttpException(SYS_MSG.BAD_REQUEST, 400);
+
+    return {
+      message: 'Property updated successfully',
+      data: updatedProperty,
+    };
   }
 
   remove(id: number) {

@@ -10,14 +10,14 @@ export const INVALID_PASSWORD = 'Invalid password';
 export const LOGIN_SUCCESSFUL = 'Login successful';
 export const LOGIN_ERROR = 'An error occurred during login';
 export const FORBIDDEN_ACTION = 'You do not have the permission to perform this action';
-export const RESOURCE_NOT_FOUND = resource => {
-  return `${resource} does not exist`;
+export const RESOURCE_NOT_FOUND = (resource: string) => {
+  return `${resource} not found`;
 };
 
 export const RESOURCE_FOUND_SUCCESSFULLY = (resource: string) => {
   return `${resource} found successfully`;
 };
-export const RESOURCE_ALREADY_EXISTS = resource => {
+export const RESOURCE_ALREADY_EXISTS = (resource: string) => {
   return `${resource} already exist`;
 };
 export const INVALID_RESOURCE = (resource: string) => {
